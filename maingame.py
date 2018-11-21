@@ -21,7 +21,7 @@ def run_game():
     background=pygame.image.load('image/background.png').convert_alpha()#To load the image of the background and the convert.alpha is to convert the image surface to the same pixel used by the screen to improve performance
     gamestatus=Gamestats(settings)
     play_button=Button(settings,screen,"PLAY")
-    highscorebutton=Resethighscore(settings,screen,"Reset HighScore(Restart the program for it to take effect)")
+    highscorebutton=Resethighscore(settings,screen,"Reset HighScore")
     score=Scoreboard(settings,screen,gamestatus)
     x=0 #to set the background image x coordinate
     y=0 #for the relative y

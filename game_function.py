@@ -30,7 +30,8 @@ def check_events(car,playbutton,highscorebutton,stats,enemylistleft,enemylistrig
             mouse_x,mouse_y=pygame.mouse.get_pos()
             check_play_button(stats,playbutton,mouse_x,mouse_y,enemylistleft,enemylistright,car,screen,settings,count,scoreboard)
             check_reset_high_score_button(highscorebutton,stats,mouse_x,mouse_y)
-
+            scoreboard.show_score()
+            pygame.display.flip()
 
 def check_play_button(stats,play_button,mouse_x,mouse_y,enemylistleft,enemylistright,car,screen,settings,count,scoreboard):#To check if the play button is clicked
         button_clicked=play_button.rect.collidepoint(mouse_x,mouse_y)

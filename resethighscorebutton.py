@@ -4,11 +4,11 @@ class Resethighscore:
     def __init__(self,settings,screen,text):
         self.screen=screen
         self.screen_rect=screen.get_rect()
-        self.width=720
+        self.width=300
         self.height=50
         self.button_color=(0,255,0)
         self.text_color=(255,255,255)
-        self.font=pygame.font.SysFont(None,38)
+        self.font=pygame.font.SysFont(None,48)
 
         self.rect=pygame.Rect(0,0,self.width,self.height)
         self.rect.centerx=self.screen_rect.centerx

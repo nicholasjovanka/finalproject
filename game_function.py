@@ -65,7 +65,7 @@ def enemy_spawner(enemylistleft,enemylistright,screen,settings,count):          
         enemy.blitme()
 
 
-def update_screen(car,stats,play_button,high_score_button,scoreboard):    #
+def update_screen(car,stats,play_button,high_score_button,scoreboard):    #To update the screen
     scoreboard.show_score()
     if not stats.game_active:
         play_button.draw_button()
@@ -73,7 +73,7 @@ def update_screen(car,stats,play_button,high_score_button,scoreboard):    #
     car.blitme()
     pygame.display.flip()
 
-def update_score(stats,scoreboard):
+def update_score(stats,scoreboard):             #To update the score
     stats.score+=10
     scoreboard.draw_score()
 

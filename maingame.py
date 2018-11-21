@@ -33,7 +33,7 @@ def run_game():
         if rel_y<settings.screen_height:          #Line 36 to 37 is to blit another background image to fill the blank gap in the first moving background image
                 screen.blit(background,(x,rel_y))
         if gamestatus.game_active:#To check if the game status is active or not
-            pygame.mixer.music.load('car_driving.wav')
+            pygame.mixer.music.load('car_driving.wav')#line 36 and 37 is to play the car driving effect while the game is active
             pygame.mixer.music.play(-1)
             y+=settings.enemy_speed
             count+=1

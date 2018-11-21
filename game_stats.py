@@ -1,4 +1,5 @@
 
+
 class Gamestats:
     def __init__(self,settings):
         self.game_active=False
@@ -15,5 +16,9 @@ class Gamestats:
             except:
                 self.high_score=0
 
+    def reset_highscore(self):
+        with open("highscore.txt","w") as f:
+            f.write("0")
+        self.high_score=0
 
 

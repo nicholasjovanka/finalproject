@@ -1,4 +1,5 @@
 import sys
+import os
 import pygame
 from game_settings import Settings
 from main_car import Car
@@ -10,7 +11,7 @@ import pygame.font
 from game_stats import Gamestats
 from button import Button
 from scoreboard import Scoreboard
-
+from resethighscorebutton import Resethighscore
 def run_game():
     settings=Settings()
     pygame.init() #To initialize the background setting
@@ -20,6 +21,7 @@ def run_game():
     background=pygame.image.load('image/background.png').convert_alpha()#To load the image of the background and the convert.alpha is to convert the image surface to the same pixel used by the screen to improve performance
     gamestatus=Gamestats(settings)
     play_button=Button(settings,screen,"PLAY")
+    highscorebutton=Resethighscore(settings,screen,"Reset HighScore(Restart the program for it to take effect)")
     score=Scoreboard(settings,screen,gamestatus)
     x=0 #to set the background image x coordinate
     y=0 #for the relative y
@@ -29,10 +31,10 @@ def run_game():
     scorecount=0 #The count that is use to adjust the interval in which the score is updated/increase
     scorescale=0 #The count that is use to adjust the time when the difficulty will
     while True:
-        game_function.update_screen(car,gamestatus,play_button,score)#Updates/draw the recently drawn screen and also the player car position and scoreboard/highscore/and level
+        game_function.update_screen(car,gamestatus,play_button,highscorebutton,score)#Updates/draw the recently drawn screen and also the player car position and scoreboard/highscore/and level
         rel_y=y%background.get_rect().height            #for the relative y position of the background image
         screen.blit(background,(x,rel_y-background.get_rect().height))#To blit the moving background image to the screen
-        game_function.check_events(car,play_button,gamestatus,enemylistleft,enemylistright,screen,settings,count,score)#To check for player input such as keyboard and mouse like if the playe have pressed the button or not
+        game_function.check_events(car,play_button,highscorebutton,gamestatus,enemylistleft,enemylistright,screen,settings,count,score)#To check for player input such as keyboard and mouse like if the playe have pressed the button or not
         if rel_y<settings.screen_height:          #Line 36 to 37 is to blit another background image to fill the blank gap in the first moving background image
                 screen.blit(background,(x,rel_y))
         if gamestatus.game_active:#To check if the game status is active or not
@@ -62,7 +64,9 @@ def run_game():
             scorecount=0
 
 
-
+def restart_program():
+     python = sys.executable
+     os.execl(python, python, * sys.argv)
 
 
 

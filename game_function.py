@@ -4,7 +4,7 @@ from enemy_car import Enemy
 import random
 import pygame.font
 
-def check_events(car,playbutton,stats,enemylistleft,enemylistright,screen,settings,count,scoreboard):  #To check for player inputs
+def check_events(car,playbutton,highscorebutton,stats,enemylistleft,enemylistright,screen,settings,count,scoreboard):  #To check for player inputs
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
                     sys.exit()
@@ -29,6 +29,7 @@ def check_events(car,playbutton,stats,enemylistleft,enemylistright,screen,settin
         elif event.type==pygame.MOUSEBUTTONDOWN:
             mouse_x,mouse_y=pygame.mouse.get_pos()
             check_play_button(stats,playbutton,mouse_x,mouse_y,enemylistleft,enemylistright,car,screen,settings,count,scoreboard)
+            check_reset_high_score_button(highscorebutton,stats,mouse_x,mouse_y)
 
 
 def check_play_button(stats,play_button,mouse_x,mouse_y,enemylistleft,enemylistright,car,screen,settings,count,scoreboard):#To check if the play button is clicked
@@ -45,6 +46,11 @@ def check_play_button(stats,play_button,mouse_x,mouse_y,enemylistleft,enemylistr
             car.reset_position()
             settings.initial_speed()
 
+def check_reset_high_score_button(high_score_button,stats,mouse_x,mouse_y):
+    button_clicked=high_score_button.rect.collidepoint(mouse_x,mouse_y)
+    if button_clicked and not stats.game_active:
+        stats.reset_highscore()
+
 
 def enemy_spawner(enemylistleft,enemylistright,screen,settings,count):                  #To spawn the enemies
     if count ==1:
@@ -58,10 +64,11 @@ def enemy_spawner(enemylistleft,enemylistright,screen,settings,count):          
         enemy.blitme()
 
 
-def update_screen(car,stats,play_button,scoreboard):    #
+def update_screen(car,stats,play_button,high_score_button,scoreboard):    #
     scoreboard.show_score()
     if not stats.game_active:
         play_button.draw_button()
+        high_score_button.draw_highscore_button()
     car.blitme()
     pygame.display.flip()
 

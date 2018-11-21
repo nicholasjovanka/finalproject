@@ -1,17 +1,18 @@
 import pygame.font
 
-class HighscoreButton:
+class Resethighscore:
     def __init__(self,settings,screen,text):
         self.screen=screen
         self.screen_rect=screen.get_rect()
-        self.width=200
+        self.width=720
         self.height=50
         self.button_color=(0,255,0)
         self.text_color=(255,255,255)
-        self.font=pygame.font.SysFont(None,48)
+        self.font=pygame.font.SysFont(None,38)
 
         self.rect=pygame.Rect(0,0,self.width,self.height)
-        self.rect.center=self.screen_rect.center+30
+        self.rect.centerx=self.screen_rect.centerx
+        self.rect.centery=self.screen_rect.centery+60
         self.msg(text)
 
     def msg(self,msg):#To set the text in the button

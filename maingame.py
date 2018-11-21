@@ -1,12 +1,7 @@
-import sys
-import os
 import pygame
 from game_settings import Settings
 from main_car import Car
 import game_function
-from enemy_car import Enemy
-from pygame.sprite import Group
-import random
 import pygame.font
 from game_stats import Gamestats
 from button import Button
@@ -63,10 +58,6 @@ def run_game():
             scorescale=0
             scorecount=0
 
-
-def restart_program():
-     python = sys.executable
-     os.execl(python, python, * sys.argv)
 
 
 

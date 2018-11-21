@@ -1,6 +1,6 @@
 import pygame.font
 
-class Resethighscore:
+class Resethighscore:#This is to reset the highscore
     def __init__(self,settings,screen,text):
         self.screen=screen
         self.screen_rect=screen.get_rect()

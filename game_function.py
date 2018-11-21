@@ -47,7 +47,7 @@ def check_play_button(stats,play_button,mouse_x,mouse_y,enemylistleft,enemylistr
             car.reset_position()
             settings.initial_speed()
 
-def check_reset_high_score_button(high_score_button,stats,mouse_x,mouse_y):
+def check_reset_high_score_button(high_score_button,stats,mouse_x,mouse_y):#To reset the highscore
     button_clicked=high_score_button.rect.collidepoint(mouse_x,mouse_y)
     if button_clicked and not stats.game_active:
         stats.reset_highscore()
@@ -56,7 +56,7 @@ def check_reset_high_score_button(high_score_button,stats,mouse_x,mouse_y):
 def enemy_spawner(enemylistleft,enemylistright,screen,settings,count):                  #To spawn the enemies
     if count ==1:
         enemylistleft.append(Enemy(settings,screen,random.randint(138,400)))
-        enemylistright.append(Enemy(settings,screen,random.randint(420,660)))
+        enemylistright.append(Enemy(settings,screen,random.randint(420,650)))
     for enemy in enemylistleft:
         enemy.update()
         enemy.blitme()
